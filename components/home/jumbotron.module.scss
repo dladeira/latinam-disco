@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    height: 70vh;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../../public/books.jpg");
+    background-position: 50% 40%;
+    background-size: cover;
+
+    box-sizing: border-box;
+}
+
+.title {
+    margin: 0;
+    padding-top: 60px;
+
+    font-weight: 500;
+    font-size: 8rem;
+    color: white;
+}
+
+.subtitle {
+    margin: 0;
+
+    font-weight: 400;
+    font-size: 5rem;
+    color: white;
+}
+
+.button {
+    margin-top: auto;
+    margin-bottom: 10vh;
+
+    padding: 10px 30px;
+
+    border: 4px #6AB547 solid;
+    border-radius: 25px;
+
+    font-size: 3rem;
+    background-color: transparent;
+    color: white;
+
+    transition: all 200ms cubic-bezier(.77,0,.18,1);
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+}

@@ -1,0 +1,33 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 7vh;
+    width: 100%;
+
+    padding: 0 30px;
+
+    background-color: #08B2E3;
+
+    box-sizing: border-box;
+}
+
+.navBrand {
+    font-family: 'Unkempt';
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navItem {
+    text-decoration: none;
+    color: white;
+
+    font-size: 2rem;
+}
+
+.navItem:hover {
+    cursor: pointer;
+    
+}
