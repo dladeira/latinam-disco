@@ -6,7 +6,7 @@ export default function Jumbotron() {
         <div className={styles.container}>
             <h1 className={styles.title}>Disco Latinam</h1>
             <h2 className={styles.subtitle}>Learn latin <i>with ease</i></h2>
-            <Link href="/practice"><button className={styles.button}>intra</button></Link>
+            <Link href="/signup"><button className={styles.button}>intra</button></Link>
         </div>
     )
 }
