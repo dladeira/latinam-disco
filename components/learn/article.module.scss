@@ -6,7 +6,7 @@
     height: 150px;
     width: 150px;
 
-    margin: 0 auto;
+    margin: 20px auto;
 
     background-color: greenyellow;
     border-radius: 50%;
@@ -28,7 +28,7 @@
 }
 
 .enlarged {
-    display: none;
+    display: flex;
     flex-direction: column;
     position: absolute;
 
@@ -41,4 +41,8 @@
     padding: 10px;
 
     background-color: rgb(223, 223, 223);
+}
+
+.hidden {
+    display: none;
 }

@@ -2,17 +2,17 @@ import { useState } from 'react'
 import styles from './article.module.scss'
 
 export default function Article({ title, text }) {
-    [display, setDisplay] = useState("none");
+    var [display, setDisplay] = useState(styles.hidden);
 
     function toggleDisplay() {
-        setDisplay(display == "none" ? "flex" : "none");
+        setDisplay(display == styles.hidden ? styles.enlarged : styles.hidden);
     }
 
     return (
         <div className={styles.container} onClick={toggleDisplay}>
             <h1 className={styles.titleText}>{title}</h1>
-            <div className={styles.enlarged}>
-                <p>{title}</p>
+            <div className={display}>
+                <h1>{title}</h1>
                 <p>{text}</p>
             </div>
         </div>

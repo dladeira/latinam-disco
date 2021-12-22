@@ -1,13 +1,20 @@
 import Article from '../components/learn/article'
 import { useUser } from '../lib/hooks'
 
-export default function Learn() {
+export default function Learn({ articles }) {
     var user = useUser({ redirectTo: '/' })
-    
+
     return (
         <>
-            <h1>Learn</h1>
-            <Article title="Introduction" text="Latin is a cool language" />
+            {articles.map((article) => <Article title={article.title} text={article.text} />)}
         </>
     )
+}
+
+Learn.getInitialProps = async () => {
+    const res = await fetch("http://localhost:3000/api/articles")
+    const json = await res.json()
+    return {
+        articles: json
+    }
 }
