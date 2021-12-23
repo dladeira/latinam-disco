@@ -6,7 +6,7 @@ export default function Learn({ articles }) {
 
     return (
         <>
-            {articles.map((article) => <Article title={article.title} text={article.text} />)}
+            {articles.map((article) => <Article title={article.title} text={article.text} id={article._id} />)}
         </>
     )
 }

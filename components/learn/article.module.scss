@@ -27,22 +27,109 @@
     text-align: center;
 }
 
+.textWrapper {
+    width: 80%;
+
+    margin: 10px auto;
+}
+
+.titleInput {
+    display: block;
+
+    width: 20%;
+
+    margin: 0 auto;
+    padding: 10px;
+
+    font-size: 1.5rem;
+}
+
+.text {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    white-space: pre-wrap;
+}
+
+.textInput {
+    height: 500px;
+    width: 100%;
+
+    padding: 10px;
+
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.lineBreak {
+    display: block;
+    height: 10px;
+}
+
+.submitBtn {
+    display: block;
+
+    height: 50px;
+    width: 20%;
+
+    margin: 10px auto;
+    background-color: rgb(0, 255, 0);
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center; 
+}
+
+.editBtn {
+    display: block;
+
+    margin: 0 10px;
+    padding: 5px 10px;
+
+    background-color: transparent;
+    border: 1px solid black;
+    outline: none;
+}
+
+.editBtn:hover {
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    cursor: pointer;
+}
+
 .enlarged {
     display: flex;
     flex-direction: column;
     position: absolute;
 
     top: 5vh;
-    left: 5vw;
+    left: 7.5vw;
     height: 80vh;
-    width: 90vw;
+    width: 85vw;
 
     margin: 50px auto;
-    padding: 10px;
+    padding: 10px 50px;
 
     background-color: rgb(223, 223, 223);
+    box-sizing: border-box;
 }
 
 .hidden {
     display: none;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
 }
