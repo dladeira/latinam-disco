@@ -7,12 +7,6 @@ const Home = () => {
     return (
         <>
             <Jumbotron />
-            {user && (
-                <>
-                    <p>Currently logged in as:</p>
-                    <pre>{JSON.stringify(user, null, 2)}</pre>
-                </>
-            )}
         </>
     )
 }

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import styles from './article.module.scss'
 
-export default function Article({ title, text, id }) {
+export default function Article({ title, text, id, admin }) {
     var [display, setDisplay] = useState(styles.hidden);
-    var [edit, setEdit] = useState(true)
+    var [edit, setEdit] = useState(false)
 
     function toggleDisplay() {
         setDisplay(display == styles.hidden ? styles.enlarged : styles.hidden)
@@ -48,6 +48,7 @@ export default function Article({ title, text, id }) {
             </>
         ) : (
             <>
+            {admin}
                 <div className={styles.container} onClick={toggleDisplay}>
                     <h1 className={styles.titleText}>{title}</h1>
                 </div>

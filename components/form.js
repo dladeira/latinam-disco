@@ -2,6 +2,11 @@ import Link from 'next/link'
 
 const Form = ({ isLogin, errorMessage, onSubmit }) => (
   <form onSubmit={onSubmit}>
+    {isLogin ? (
+      <h1>Login</h1>
+    ) : (
+      <h1>Sign up</h1>
+    )}
     <label>
       <span>Username</span>
       <input type="text" name="username" required />
@@ -20,16 +25,10 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
     <div className="submit">
       {isLogin ? (
         <>
-          <Link href="/signup">
-            <a>I don't have an account</a>
-          </Link>
           <button type="submit">Login</button>
         </>
       ) : (
         <>
-          <Link href="/login">
-            <a>I already have an account</a>
-          </Link>
           <button type="submit">Signup</button>
         </>
       )}
@@ -38,6 +37,13 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
     {errorMessage && <p className="error">{errorMessage}</p>}
 
     <style jsx>{`
+      form {
+        height: 100%;
+        padding: 0;
+
+        justify-self: center;
+      }
+
       form,
       label {
         display: flex;
@@ -57,6 +63,8 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
         justify-content: flex-end;
         align-items: center;
         justify-content: space-between;
+
+        margin-top: auto;
       }
       .submit > a {
         text-decoration: none;
