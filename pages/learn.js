@@ -4,9 +4,7 @@ import { useUser } from '../lib/hooks'
 
 export default function Learn({ articles }) {
     const user = useUser({ redirectTo: '/' })
-    useEffect(() => {
-        console.log(user)
-    }, [user])
+    
     return (user ? (
         <>
             {articles.map((article) => <Article title={article.title} text={article.text} id={article._id} admin={user.admin} />)}

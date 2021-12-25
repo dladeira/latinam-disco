@@ -48,7 +48,6 @@ export default function Article({ title, text, id, admin }) {
             </>
         ) : (
             <>
-            {admin}
                 <div className={styles.container} onClick={toggleDisplay}>
                     <h1 className={styles.titleText}>{title}</h1>
                 </div>
@@ -57,7 +56,7 @@ export default function Article({ title, text, id, admin }) {
                         <button className={styles.editBtn} onClick={toggleEdit}>EDIT</button>
                         <button className={styles.editBtn} onClick={toggleDisplay}>CLOSE</button>
                     </div>
-                    <h1>{title}</h1>
+                    <h1 className={styles.enlargedTitle}>{title}</h1>
                     <div className={styles.textWrapper}>
                         <p className={styles.text} dangerouslySetInnerHTML={{ __html: textToMarkdown(text) }}></p>
                     </div>
