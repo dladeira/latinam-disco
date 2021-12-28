@@ -1,52 +1,65 @@
 import { useState } from 'react'
 import styles from './practice.module.scss'
 
-export default function Practice({ title, questions, answers, id }) {
-    var [display, setDisplay] = useState(styles.hidden);
-    var [input, setInput] = useState([])
-    
+export default function PracticeComponent({ title, questions, answers, id }) {
+    var [panelVisible, setPanelVisible] = useState(false);
+    var [answersArray, setAnswersArray] = useState([])
 
-    function updateInput(index, e) {
-        var newInput = [...input]
-        newInput[index] = e.target.value
-        setInput(newInput)
-    }
-
-    function toggleDisplay() {
-        setDisplay(display == styles.hidden ? styles.enlarged : styles.hidden)
-    }
-
-    async function submit(e) {
-        console.log(e.target)
-
-        const res = await fetch('/api/practiceUpdate', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: e.target.title.value, text: e.target.text.value, id: e.target.id.value }),
-        })
-
+    function updateAnswerArray(e) {
+        var newInput = [...answersArray]
+        for (var i = 0; i < questions.length; i++) {
+            newInput[i] = e.target[`question${i}`].value
+        }
+        setAnswersArray(newInput)
         e.preventDefault()
     }
 
+    function getClassForQuestion(questionIndex) {
+        if (answersArray[questionIndex] == null) {
+            return ""
+        }
+
+        if (answersArray[questionIndex] == answers[questionIndex]) {
+            return styles.correct
+        }
+
+        return styles.incorrect
+    }
+
+    function togglePanel() {
+        setPanelVisible(!panelVisible)
+        setAnswersArray([]) // Reset questions
+    }
+
     return (
-            <>
-                <div className={styles.container} onClick={toggleDisplay}>
-                    <h1 className={styles.titleText}>{title}</h1>
-                </div>
-                <div className={display}>
-                    <div className={styles.control}>
-                        <button className={styles.editBtn} onClick={toggleDisplay}>CLOSE</button>
+        <>
+            {/* Button */}
+            <div className={styles.button} onClick={togglePanel}>
+                <h1 className={styles.buttonText}>{title}</h1>
+            </div>
+
+            {/* Panel */}
+            {panelVisible ? (
+                <div className={styles.panel}>
+
+                    {/* Control Bar */}
+                    <div className={styles.controlBar}>
+                        <button className={styles.controlButton} onClick={togglePanel}>CLOSE</button>
                     </div>
-                    <h1 className={styles.enlargedTitle}>{title}</h1>
-                    <div className={styles.textWrapper}>
+                    <h1 className={styles.panelTitle}>{title}</h1>
+                    <form id="questionnaire" onSubmit={updateAnswerArray}>
                         {questions.map((question, questionIndex) => (
                             <div className={styles.questionContainer}>
                                 <p className={styles.question}>{question}</p>
-                                <input type="text" onChange={updateInput.bind(this, questionIndex)} className={styles.answer + " " + (input[questionIndex] == answers[questionIndex] ? styles.correct : styles.incorrect)} />
+                                <input name={"question" + questionIndex} type="text" className={styles.input + " " + getClassForQuestion(questionIndex)} />
                             </div>
                         ))}
-                    </div>
+                    </form>
+                    <button type="submit" form="questionnaire" value="submit" className={styles.checkButton}>Check</button>
                 </div>
-            </>
-        )
+            ) : (
+                <></>
+            )}
+        </>
+    )
 }

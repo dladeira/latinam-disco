@@ -1,4 +1,6 @@
-.container {
+// == BUTTON
+
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,11 +16,11 @@
     user-select: none;
 }
 
-.container:hover {
+.button:hover {
     cursor: pointer;
 }
 
-.titleText {
+.buttonText {
     width: 100%;
 
     margin: 0;
@@ -27,81 +29,9 @@
     text-align: center;
 }
 
-.textWrapper {
-    width: 80%;
+// == PANEL
 
-    margin: 10px auto;
-}
-
-.titleInput {
-    display: block;
-
-    width: 20%;
-
-    margin: 0 auto;
-    padding: 10px;
-
-    font-size: 1.5rem;
-}
-
-.text {
-    font-size: 1.4rem;
-    line-height: 2rem;
-    white-space: pre-wrap;
-}
-
-.textInput {
-    height: 500px;
-    width: 100%;
-
-    padding: 10px;
-
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-}
-
-.lineBreak {
-    display: block;
-    height: 10px;
-}
-
-.submitBtn {
-    display: block;
-
-    height: 50px;
-    width: 20%;
-
-    margin: 10px auto;
-    background-color: rgb(0, 255, 0);
-}
-
-.control {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center; 
-}
-
-.editBtn {
-    display: block;
-
-    margin: 0 10px;
-    padding: 5px 10px;
-
-    background-color: transparent;
-    border: 1px solid black;
-    outline: none;
-}
-
-.editBtn:hover {
-    cursor: pointer;
-}
-
-.submitBtn:hover {
-    cursor: pointer;
-}
-
-.enlarged {
+.panel {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -118,8 +48,74 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none;
+// CONTROL
+
+.controlBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center; 
+}
+
+.controlButton {
+    display: block;
+
+    margin: 0 10px;
+    padding: 5px 10px;
+
+    background-color: transparent;
+    border: 1px solid black;
+    outline: none;
+}
+
+// CONTENT
+
+.panelTitle {
+    display: block;
+}
+
+.panelContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 80vw;
+
+    margin: 10px auto;
+    background-color: rgb(194, 194, 194);
+}
+
+// QUESTION
+
+.questionContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+    width: 30vw;
+    margin: 25px 5vw;
+}
+
+.question {
+    margin: 0;
+    padding-right: 100px;
+
+    font-size: 1.7rem;
+}
+
+.input {
+    height: fit-content;
+    max-width: 70%;
+
+    padding: 7px 12px;
+
+    font-size: 1.4rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
 .correct {
@@ -130,31 +126,24 @@
     color: red;
 }
 
-.questionContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.checkButton {
+    width: 200px;
 
-    width: 80%;
+    margin: 50px auto;
+    padding: 20px 40px;
 
-    margin: 10px auto;
-}
-
-.question {
-    padding-right: 100px;
-
-    font-size: 1.7rem;
-}
-
-.answer {
-    height: fit-content;
-    max-width: 70%;
-
-    padding: 7px 12px;
-
-    font-size: 1.4rem;
-    border-radius: 5px;
     border: none;
+    border-radius: 5px;
     outline: none;
+
+    font-size: 1.5rem;
+    background-color: green;
+    color: white;
+
+    transition: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) background-color;
+}
+
+.checkButton:hover {
+    cursor: pointer;
+    background-color: rgb(0, 153, 0);
 }
