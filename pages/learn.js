@@ -3,7 +3,7 @@ import Article from '../components/learn/article'
 import { useUser } from '../lib/hooks'
 
 export default function Learn({ articles }) {
-    const user = useUser({ redirectTo: '/' })
+    const user = useUser({ redirectTo: '/login' })
     
     return (user ? (
         <>
