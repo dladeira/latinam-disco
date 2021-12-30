@@ -1,4 +1,4 @@
-# disco-latinam
+# latinam-disco
 A latin learning website
 
 ---
