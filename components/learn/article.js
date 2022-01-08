@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import styles from './article.module.scss'
 
-export default function Article({ title, text, id, admin }) {
+export default function Article({ rawTitle, rawText, id, admin }) {
+    var [title, setTitle] = useState(rawTitle)
+    var [text, setText] = useState(rawText)
     var [display, setDisplay] = useState(styles.hidden);
     var [edit, setEdit] = useState(false)
 
@@ -14,15 +16,18 @@ export default function Article({ title, text, id, admin }) {
     }
 
     async function submit(e) {
-        console.log(e.target)
+        e.preventDefault()
 
-        const res = await fetch('/api/articleUpdate', {
+        await fetch('/api/articleUpdate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: e.target.title.value, text: e.target.text.value, id: e.target.id.value }),
         })
 
-        e.preventDefault()
+        setTitle(e.target.title.value)
+        setText(e.target.text.value)
+
+        setEdit(false)
     }
 
     return (edit ?
@@ -33,7 +38,7 @@ export default function Article({ title, text, id, admin }) {
                 </div>
                 <div className={display}>
                     <div className={styles.control}>
-                        <button className={styles.editBtn} onClick={toggleEdit}>EDIT</button>
+                        {admin ? (<button className={styles.editBtn} onClick={toggleEdit}>EDIT</button>) : (<></>)}
                         <button className={styles.editBtn} onClick={toggleDisplay}>CLOSE</button>
                     </div>
                     <form onSubmit={submit}>
@@ -53,7 +58,7 @@ export default function Article({ title, text, id, admin }) {
                 </div>
                 <div className={display}>
                     <div className={styles.control}>
-                        <button className={styles.editBtn} onClick={toggleEdit}>EDIT</button>
+                        {admin ? (<button className={styles.editBtn} onClick={toggleEdit}>EDIT</button>) : (<></>)}
                         <button className={styles.editBtn} onClick={toggleDisplay}>CLOSE</button>
                     </div>
                     <h1 className={styles.enlargedTitle}>{title}</h1>
@@ -65,14 +70,14 @@ export default function Article({ title, text, id, admin }) {
         ))
 }
 
-function textToMarkdown(text) {
-    text = text.replace(new RegExp(escapeRegExp("<red>"), 'g'), `<span class="${styles.red}">`)
-    text = text.replace(new RegExp(escapeRegExp("<green>"), 'g'), `<span class="${styles.green}">`)
-    text = text.replace(new RegExp(escapeRegExp("<blue>"), 'g'), `<span class="${styles.blue}">`)
-    text = text.replace(new RegExp(escapeRegExp("</>"), 'g'), "</span>")
-    text = text.replace(new RegExp("-> ", "g"), "        ")
-    text = text.replace(/(?:\r\n|\r|\n)/g, `<lineBreak class="${styles.lineBreak}"></lineBreak>`);
-    return text;
+function textToMarkdown(input) {
+    input = input.replace(new RegExp(escapeRegExp("<red>"), 'g'), `<span class="${styles.red}">`)
+    input = input.replace(new RegExp(escapeRegExp("<green>"), 'g'), `<span class="${styles.green}">`)
+    input = input.replace(new RegExp(escapeRegExp("<blue>"), 'g'), `<span class="${styles.blue}">`)
+    input = input.replace(new RegExp(escapeRegExp("</>"), 'g'), "</span>")
+    input = input.replace(new RegExp("-> ", "g"), "        ")
+    input = input.replace(/(?:\r\n|\r|\n)/g, `<lineBreak class="${styles.lineBreak}"></lineBreak>`);
+    return input;
 }
 
 function escapeRegExp(string) {
