@@ -16,7 +16,7 @@ export default function PracticePage({ practice }) {
 }
 
 PracticePage.getInitialProps = async () => {
-    const res = await fetch("http://localhost:3000/api/practice")
+    const res = await fetch("https://latin.ladeira.eu/api/practice")
     const json = await res.json()
     return {
         practice: json

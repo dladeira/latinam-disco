@@ -40,7 +40,7 @@ export default function Learn({ articles }) {
 }
 
 Learn.getInitialProps = async () => {
-    const res = await fetch("http://localhost:3000/api/articles")
+    const res = await fetch("https://latin.ladeira.eu/api/articles")
     const json = await res.json()
     return {
         articles: json
