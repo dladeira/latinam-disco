@@ -2,7 +2,7 @@ module.exports = {
   apps : [{
     name: "latinam-disco",
     script: 'npm',
-    args: 'production',
+    args: 'start',
   }, {
     script: './service-worker/',
     watch: ['./service-worker']
