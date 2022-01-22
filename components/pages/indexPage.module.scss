@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    height: 70vh;
+    height: 93vh;
 
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../../public/books.jpg");
     background-position: 50% 40%;
@@ -30,16 +30,23 @@
     color: white;
 }
 
-.button {
-    margin-top: auto;
-    margin-bottom: 10vh;
+.buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    height: 100%;
+}
+
+.button {
     padding: 10px 30px;
 
-    border: 4px #6AB547 solid;
+    border: 4px #ffdd00 solid;
     border-radius: 25px;
 
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 500;
     background-color: transparent;
     color: white;
 

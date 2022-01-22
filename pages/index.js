@@ -1,14 +1,9 @@
-import Jumbotron from '../components/home/jumbotron'
-import { useUser } from '../lib/hooks'
+import IndexPage from '../components/pages/indexPage'
 
-const Home = () => {
-    const user = useUser()
-
+export default () => {
     return (
         <>
-            <Jumbotron />
+            <IndexPage />
         </>
     )
 }
-
-export default Home

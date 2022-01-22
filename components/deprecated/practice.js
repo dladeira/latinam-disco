@@ -47,7 +47,7 @@ export default function PracticeComponent({ title, questions, answers, id }) {
                         <button className={styles.controlButton} onClick={togglePanel}>CLOSE</button>
                     </div>
                     <h1 className={styles.panelTitle}>{title}</h1>
-                    <form id="questionnaire" onSubmit={updateAnswerArray}>
+                    <form id="questionnaire" onSubmit={updateAnswerArray} className={styles.questionsWrapper}>
                         {questions.map((question, questionIndex) => (
                             <div className={styles.questionContainer}>
                                 <p className={styles.question}>{question}</p>

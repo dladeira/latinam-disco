@@ -17,14 +17,12 @@ const Header = () => {
             <Link href="/"><h1 className={styles.navItem + " " + styles.navBrand}>{svg}</h1></Link>
             {user ? (
                 <>
-                    <Link href="/learn"><h1 className={styles.navItem + " " + styles.navAuth}>Learn</h1></Link>
-                    <Link href="/practice"><h1 className={styles.navItem + " " + styles.navAuth}>Practice</h1></Link>
-                    <a href="/api/logout" className={styles.navItem + " " + styles.navAuth}>Logout</a>
+                    <Link href="/articles"><div className={styles.navItem}>Learn</div></Link>
+                    <Link href="/practice"><div className={styles.navItem}>Practice</div></Link>
+                    <a href="/api/logout" className={styles.navItem}>Logout</a>
                 </>
             ) : (
-                <Link href="/login">
-                    <h1 className={styles.navItem + " " + styles.navAuth}>Login</h1>
-                </Link>
+                <Link href="/login"><h1 className={styles.navItem}>Login</h1></Link>
             )}
         </nav>
     )

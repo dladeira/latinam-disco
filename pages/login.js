@@ -27,7 +27,7 @@ const Login = () => {
             })
             if (res.status === 200) {
                 setTimeout(() => {
-                    Router.push('/learn')
+                    Router.push('/articles')
                 }, 1000)
             } else {
                 throw new Error(await res.text())
@@ -60,7 +60,7 @@ const Login = () => {
                 body: JSON.stringify(body),
             })
             if (res.status === 200) {
-                Router.push('/learn')
+                Router.push('/articles')
             } else {
                 throw new Error(await res.text())
             }

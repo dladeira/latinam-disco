@@ -9,9 +9,8 @@ const Layout = (props) => (
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Unkempt:wght@700&display=swap" rel="stylesheet" /> 
         </Head>
-
         <Header />
-        <div className="container">{props.children}</div>
+        {props.children}
     </>
 )
 

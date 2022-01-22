@@ -1,0 +1,45 @@
+.row {
+    display: flex;
+    flex-direction: row;
+
+    width: 40%;
+
+    margin: 0 auto;
+}
+
+.title {
+    width: 90%;
+
+    margin: 10px auto;
+}
+
+.textWrapper {
+    width: 80%;
+
+    margin: 10px auto;
+
+    overflow-y: scroll;
+}
+
+.text {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    white-space: pre-wrap;
+}
+
+.lineBreak {
+    display: block;
+    height: 10px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
