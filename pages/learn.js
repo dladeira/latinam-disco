@@ -18,8 +18,7 @@ export default function Learn({ articles }) {
     return (user ? (
         <div className="container">
             {articleRows.map((articleRow) => {
-                console.log(articleRow)
-                return (<div className="row">{articleRow.map((article) => <Article rawTitle={article.title} rawText={article.text} id={article._id} admin={user.admin} />)}</div>)
+                return (<div className="row" key={Math.random().toString(36)}>{articleRow.map((article) => <Article key={article.title} rawTitle={article.title} rawText={article.text} id={article._id} admin={user.admin} />)}</div>)
             })}
             <style jsx>{`
         .container {
@@ -29,6 +28,9 @@ export default function Learn({ articles }) {
             display: flex;
             flex-direction: row;
 
+            width: 40%;
+
+            margin: 0 auto;
         }
       `}</style>
         </div>
@@ -39,10 +41,19 @@ export default function Learn({ articles }) {
     )
 }
 
-Learn.getInitialProps = async () => {
-    const res = await fetch("https://latin.ladeira.eu/api/articles")
-    const json = await res.json()
-    return {
-        articles: json
+Learn.getInitialProps = async ({ req }) => {
+    if (req) { // SERVER-SIDE
+        const res = await fetch(process.env.ORIGIN + "/api/articles")
+        const json = await res.json()
+        return {
+            articles: json
+        }
+    } else { // CLIENT-SIDE
+        const res = await fetch("/api/articles")
+        const json = await res.json()
+        return {
+            articles: json
+        }
     }
+
 }
