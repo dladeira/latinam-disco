@@ -9,6 +9,7 @@ export default async function articleUpdate(req, res) {
 
             article.title = req.body.title
             article.text = req.body.text
+            article.index = req.body.index
             article.save().then(() => {
                 res.status(200).send({ done: true })
                 resolve()
