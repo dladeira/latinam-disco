@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useUser } from '../../../lib/hooks'
 
 import styles from './adminPage.module.scss'
 
@@ -19,10 +20,14 @@ export default ({ rawArticles }) => {
 }
 
 function EditArticle({ rawTitle, rawText, rawIndex, id }) {
+    const user = useUser()
+
     var [title, setTitle] = useState(rawTitle)
     var [text, setText] = useState(rawText)
     var [index, setIndex] = useState(rawIndex)
     var [changed, setChanged] = useState(false)
+
+    console.log(user)
 
     async function submit(e) {
         e.preventDefault()
@@ -32,7 +37,7 @@ function EditArticle({ rawTitle, rawText, rawIndex, id }) {
         await fetch('/api/articleUpdate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: e.target.title.value, text: e.target.text.value, index: e.target.index.value, id: e.target.id.value }),
+            body: JSON.stringify({ title: e.target.title.value, text: e.target.text.value, index: e.target.index.value, id: e.target.id.value, username: user.username, hash: user.hash }),
         })
 
         setChanged(false)
