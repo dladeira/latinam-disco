@@ -22,14 +22,14 @@
 }
 
 .text {
-    font-size: 1.4rem;
-    line-height: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
     white-space: pre-wrap;
 }
 
 .lineBreak {
     display: block;
-    height: 10px;
+    height: 16px;
 }
 
 .red {
@@ -42,4 +42,10 @@
 
 .blue {
     color: blue;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgb(89, 89, 89);
 }

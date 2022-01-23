@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    height: fit-content;
+    width: 80%;
+}
+
+.form > * {
+    margin: 5px 0;
+}
+
+.title {
+    font-size: 2rem;
+    width: 50%;
+}
+
+.index {
+    font-size: 2rem;
+    width: 20%;
+}
+
+.submit, .saved {
+    width: 20%;
+
+    border: none;
+
+    font-size: 2rem;
+    outline: none;
+    background-color: green;
+    color: white;
+}
+
+.saved {
+    background-color: darkblue;
+}
+
+.text {
+    height: 400px;
+    width: 100%;
+
+    font-size: 0.8rem;
+}

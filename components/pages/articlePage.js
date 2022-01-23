@@ -55,6 +55,7 @@ function textToMarkdown(input) {
     input = input.replace(new RegExp(escapeRegExp("<red>"), 'g'), `<span class="${styles.red}">`)
     input = input.replace(new RegExp(escapeRegExp("<green>"), 'g'), `<span class="${styles.green}">`)
     input = input.replace(new RegExp(escapeRegExp("<blue>"), 'g'), `<span class="${styles.blue}">`)
+    input = input.replace(new RegExp(escapeRegExp("<subtitle>"), 'g'), `<span class="${styles.subtitle}">`)
     input = input.replace(new RegExp(escapeRegExp("</>"), 'g'), "</span>")
     input = input.replace(new RegExp("-> ", "g"), "        ")
     input = input.replace(/(?:\r\n|\r|\n)/g, `<lineBreak class="${styles.lineBreak}"></lineBreak>`);
