@@ -1,26 +1,39 @@
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { useUser } from '../../../lib/hooks'
 
 import styles from './adminPage.module.scss'
 
 export default ({ rawArticles }) => {
+    var user = useUser()
+    var router = useRouter()
+
     var articles = JSON.parse(rawArticles)
 
-    return (
-        <>
-            <h1>Admin</h1>
-            <div className={styles.container}>
-                {articles.map((article) => {
-                    return <EditArticle rawTitle={article.title} rawText={article.text} rawIndex={article.index} id={article._id} />
-                })}
-            </div>
-        </>
+    async function createNewArticle(e) {
+        e.preventDefault()
 
+        await fetch('/api/articleCreate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: user.username, hash: user.hash })
+        })
+
+        router.reload(window.location.pathname)
+    }
+
+    return (
+        <div className={styles.container}>
+            {articles.map((article) => {
+                return <EditArticle rawTitle={article.title} rawText={article.text} rawIndex={article.index} id={article._id} />
+            })}
+            <button className={styles.createNew} onClick={createNewArticle}>NEW</button>
+        </div>
     )
 }
 
 function EditArticle({ rawTitle, rawText, rawIndex, id }) {
-    const user = useUser()
+    var user = useUser()
 
     var [title, setTitle] = useState(rawTitle)
     var [text, setText] = useState(rawText)
@@ -31,8 +44,6 @@ function EditArticle({ rawTitle, rawText, rawIndex, id }) {
 
     async function submit(e) {
         e.preventDefault()
-
-        console.log(e.target.title.value)
 
         await fetch('/api/articleUpdate', {
             method: 'POST',
