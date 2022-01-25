@@ -88,18 +88,20 @@ const Login = () => {
 
             background-color: white;
 
+            border-radius: 25px;
         }
 
         .login {
-          width: 300px;
-          margin: 0;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          background-color: white;
+            width: 300px;
+            margin: 0;
+            padding: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 25px 0 0 25px;
         }
 
         .border-left-none {
             border-left: none;
+            border-radius: 0 25px 25px 0;
         }
       `}</style>
         </div>
